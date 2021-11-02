@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import static com.finalspringsecurity.spring.security.student.authentication.ApplicationUserPermission.COURSE_WRITE;
 import static com.finalspringsecurity.spring.security.student.authentication.ApplicationUserRole.*;
 
 @Data
@@ -28,13 +29,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*")
-                .permitAll()
+                .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
                 .antMatchers("/api/**").hasRole(STUDENT.name())
-                .antMatchers(HttpMethod.DELETE, "/management/api/**").hasAuthority(ApplicationUserPermission.COURSE_WRITE.getPermissions())
-                .antMatchers(HttpMethod.POST, "/management/api/**").hasAuthority(ApplicationUserPermission.COURSE_WRITE.getPermissions())
-                .antMatchers(HttpMethod.PUT, "/management/api/**").hasAuthority(ApplicationUserPermission.COURSE_WRITE.getPermissions())
+                .antMatchers(HttpMethod.DELETE, "/management/api/**").hasAuthority(COURSE_WRITE.getPermissions())
+                .antMatchers(HttpMethod.POST, "/management/api/**").hasAuthority(COURSE_WRITE.getPermissions())
+                .antMatchers(HttpMethod.PUT, "/management/api/**").hasAuthority(COURSE_WRITE.getPermissions())
                 .antMatchers(HttpMethod.GET, "/management/api/**").hasAnyRole(ADMIN.name(), TRAINER.name())
                 .anyRequest()
                 .authenticated()
@@ -48,22 +49,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     protected UserDetailsService userDetailsService() {
         UserDetails kishor = User.builder()
-                .username("kishor")
-                .password(passwordEncoder.encode("password"))
+                .username("student")
+                .password(passwordEncoder.encode("student"))
 //                .roles(STUDENT.name())
                 .authorities(STUDENT.getGrantedAuthority())
                 .build();
 
         UserDetails rahim = User.builder()
-                .username("rahim")
-                .password(passwordEncoder.encode("rahim"))
+                .username("admin")
+                .password(passwordEncoder.encode("admin"))
 //                .roles(ADMIN.name())
                 .authorities(ADMIN.getGrantedAuthority())
                 .build();
 
         UserDetails pagol = User.builder()
-                .username("pagol")
-                .password(passwordEncoder.encode("pagol"))
+                .username("trainer")
+                .password(passwordEncoder.encode("trainer"))
 //                .roles(TRAINER.name())
                 .authorities(TRAINER.getGrantedAuthority())
                 .build();

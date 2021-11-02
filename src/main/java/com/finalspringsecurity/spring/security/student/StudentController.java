@@ -10,8 +10,8 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class StudentController {
     private static List<Student> student = Arrays.asList(
-            new Student(1,"kishor Roy"),
-            new Student(2,  "Rahim")
+            new Student(1,"Jodu"),
+            new Student(2,  "Modu")
     );
     @GetMapping("/find/{id}")
     public Optional<Student> getStudent(@PathVariable Integer id){
