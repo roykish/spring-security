@@ -1,5 +1,6 @@
-package com.finalspringsecurity.spring.security.student;
+package com.finalspringsecurity.spring.security.student.Controller;
 
+import com.finalspringsecurity.spring.security.student.model.Student;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;

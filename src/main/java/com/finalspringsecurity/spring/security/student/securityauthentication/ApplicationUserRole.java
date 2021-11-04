@@ -1,4 +1,4 @@
-package com.finalspringsecurity.spring.security.student.authentication;
+package com.finalspringsecurity.spring.security.student.securityauthentication;
 
 
 import com.google.common.collect.Sets;
@@ -7,7 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.finalspringsecurity.spring.security.student.authentication.ApplicationUserPermission.*;
+import static com.finalspringsecurity.spring.security.student.securityauthentication.ApplicationUserPermission.*;
 
 public enum ApplicationUserRole {
     STUDENT(Sets.newHashSet()),

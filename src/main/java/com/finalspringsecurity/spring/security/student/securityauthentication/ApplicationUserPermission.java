@@ -1,4 +1,4 @@
-package com.finalspringsecurity.spring.security.student.authentication;
+package com.finalspringsecurity.spring.security.student.securityauthentication;
 
 
 public enum ApplicationUserPermission {

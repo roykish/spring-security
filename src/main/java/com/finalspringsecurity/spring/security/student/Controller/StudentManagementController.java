@@ -1,12 +1,11 @@
-package com.finalspringsecurity.spring.security.student;
+package com.finalspringsecurity.spring.security.student.Controller;
 
+import com.finalspringsecurity.spring.security.student.model.Student;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/management/api/student")

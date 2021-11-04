@@ -1,4 +1,4 @@
-package com.finalspringsecurity.spring.security.student;
+package com.finalspringsecurity.spring.security.student.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

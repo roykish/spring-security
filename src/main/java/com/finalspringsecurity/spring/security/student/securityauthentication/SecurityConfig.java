@@ -1,4 +1,4 @@
-package com.finalspringsecurity.spring.security.student.authentication;
+package com.finalspringsecurity.spring.security.student.securityauthentication;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 
-import static com.finalspringsecurity.spring.security.student.authentication.ApplicationUserRole.*;
+import static com.finalspringsecurity.spring.security.student.securityauthentication.ApplicationUserRole.*;
 
 @Data
 @Configuration
@@ -46,8 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
 //               .httpBasic();
-                .formLogin();
 
+                .formLogin()
+                .loginPage("/login").permitAll();
 
     }
 
