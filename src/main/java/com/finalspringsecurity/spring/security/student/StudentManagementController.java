@@ -22,6 +22,12 @@ public class StudentManagementController {
         return student;
     }
 
+//    @GetMapping("/find/{id}")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TRAINER')")
+//    public void findById(@PathVariable int id){
+//        System.out.println("findById is working");
+//    }
+
     @PostMapping("/register")
     @PreAuthorize("hasAuthority('student:write')")
     public void registerNewStudent(@RequestBody Student student) {
